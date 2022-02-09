@@ -6,7 +6,7 @@ const inputCheck = require('../../utils/inputCheck');
 
 // GET all voters.
 router.get('/voters', (req, res) => {
-    const sql = `SELECT * FROM voters ORDER BY last_name DESC`;
+    const sql = `select voters.id,voters.first_name,voters.last_name,voters.email,from_unixtime(voters.created_at) AS created_datetime from voters ORDER BY voters.last_name DESC`;
 
     db.query(sql, (err, rows) => {
         if (err) {
@@ -23,7 +23,7 @@ router.get('/voters', (req, res) => {
 
 // Get single voter.
 router.get('/voter/:id', (req, res) => {
-    const sql = `SELECT * FROM voters WHERE id = ?`;
+    const sql = `select voters.id,voters.first_name,voters.last_name,voters.email,from_unixtime(voters.created_at) AS created_datetime from voters WHERE voters.id = ?`;
     const params = [req.params.id];
 
     db.query(sql, params, (err, row) => {
