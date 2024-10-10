@@ -1,11 +1,10 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
 
-
 // location of the routes
-router.use(require('./candidateRoutes'));
-router.use(require('./partyRoutes'));
-router.use(require('./voterRoutes'));
-router.use(require('./voteRoutes'));
+router.use(require("./candidateRoutes"));
+router.use(require("./partyRoutes"));
+router.use(require("./voterRoutes"));
+router.use(require("./voteRoutes"));
 
-module.exports = router;
+export default router;
